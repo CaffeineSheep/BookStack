@@ -100,7 +100,7 @@ function run_database_setup() {
 # Download BookStack
 function run_bookstack_download() {
   cd /var/www || exit
-  git clone https://github.com/CaffeineSheep/BookStack.git --branch new-mods --single-branch bookstack
+  git clone https://github.com/CaffeineSheep/BookStack.git --branch development --single-branch bookstack
 }
 
 # Install composer

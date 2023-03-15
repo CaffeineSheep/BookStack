@@ -41,7 +41,7 @@ class HomeController extends Controller
         $quickLinks = collect([
             new BasicListItem('/shelves/symbols', 'All Symbols', 'See all of the official symbols', 'star-circle'),
             // new BasicListItem('http://localhost:4000', 'Community Tasks', 'Go to the task manager', 'check'),
-            new BasicListItem(env('TASK_MANAGER_URL', null), 'Tasks', 'Go to the community task manager', 'check'),
+            new BasicListItem(env('TASK_MANAGER_URL', null), 'Find Symbols To Add', 'Go to the community task manager', 'check'),
             // new BasicListItem('/shelves/to-do-lists/all', 'To-Do Items', 'Help out by checking off to-do items!', 'check'),
             new BasicListItem('/shelves/getting-started/all', 'How Can I Help?', 'Learn how you can help Symbolpedia!', 'info'),
             // ...(Bookshelf::getBySlug('contribute')->visibleBooks()->get()->all() ?? [], true),

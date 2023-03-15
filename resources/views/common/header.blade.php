@@ -98,7 +98,7 @@
                         <li>
                             <a href="{{ env('TASK_MANAGER_URL', null) }}" class="icon-item">
                                 @icon('check')
-                                <div>Go To Tasks</div>
+                                <div>SymbolHub</div>
                             </a>
                         </li>
                         {{-- <li>

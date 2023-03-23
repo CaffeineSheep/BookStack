@@ -33,12 +33,12 @@
                         </div>
                     </div>
 
-                    @include('users.parts.language-option-row', ['value' => setting()->getUser($user, 'language', config('app.default_locale'))])
+                    <!-- @include('users.parts.language-option-row', ['value' => setting()->getUser($user, 'language', config('app.default_locale'))]) -->
                 </div>
 
                 <div class="text-right">
                     <a href="{{  url(userCan('users-manage') ? "/settings/users" : "/") }}" class="button outline">{{ trans('common.cancel') }}</a>
-                    @if($authMethod !== 'system')
+                    @if($authMethod !== 'system' && userCan('users-manage'))
                         <a href="{{ url("/settings/users/{$user->id}/delete") }}" class="button outline">{{ trans('settings.users_delete') }}</a>
                     @endif
                     <button class="button" type="submit">{{ trans('common.save') }}</button>
@@ -46,7 +46,7 @@
             </form>
         </section>
 
-        <section class="card content-wrap auto-height">
+        <!-- <section class="card content-wrap auto-height">
             <h2 class="list-heading">{{ trans('settings.users_mfa') }}</h2>
             <p>{{ trans('settings.users_mfa_desc') }}</p>
             <div class="grid half gap-xl v-center pb-s">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-        </section>
+        </section> -->
 
         @if(user()->id === $user->id && count($activeSocialDrivers) > 0)
             <section class="card content-wrap auto-height">

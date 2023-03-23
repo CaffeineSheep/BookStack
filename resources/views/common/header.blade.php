@@ -14,6 +14,8 @@
             <a target="_blank" rel="noopener noreferrer" href="https://decodingsymbols.wordpress.com/blog/"
             id="blog-btn" class="btn-special">Visit<br />Blog</a>
 
+            <a href="{{ env('TASK_MANAGER_URL', null) }}" id="symbolhub-btn" class="btn-special">Visit<br />SymbolHub</a>
+
             @if (userCan('page-create', \BookStack\Entities\Models\Book::getBySlug('drafts', true)))
                 <a href="{{ url('/books/drafts/create-page') }}" class="btn-special">+ Draft</a>
             @endif
@@ -89,6 +91,14 @@
                                 <div>{{ trans('entities.my_favourites') }}</div>
                             </a>
                         </li> --}}
+                        <li class="hide-over-l"><hr></li>
+                        <li>
+                            <a href="{{ env('TASK_MANAGER_URL', null) }}" class="icon-item text-check">
+                                @icon('symbolhub')
+                                <div>SymbolHub</div>
+                            </a>
+                        </li>
+                        <li><hr></li>
                         <li>
                             <a href="{{ $currentUser->getProfileUrl() }}" data-shortcut="profile_view" class="icon-item">
                                 @icon('user')
@@ -96,17 +106,11 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ env('TASK_MANAGER_URL', null) }}" class="icon-item">
-                                @icon('check')
-                                <div>SymbolHub</div>
-                            </a>
-                        </li>
-                        {{-- <li>
                             <a href="{{ $currentUser->getEditUrl() }}" class="icon-item">
                                 @icon('edit')
                                 <div>{{ trans('common.edit_profile') }}</div>
                             </a>
-                        </li> --}}
+                        </li>
                         @if (signedInUser() && userCan('settings-manage'))
                             <li>
                                 <a href="{{ url('/settings') }}" class="icon-item">
@@ -123,7 +127,7 @@
                                 <div>Visit Blog</div>
                             </a>
                         </li>
-                        <li><hr></li>
+                        <!-- <li><hr></li> -->
                         <li>
                             <a href="{{ url('/preferences/shortcuts') }}" class="icon-item">
                                 @icon('shortcuts')

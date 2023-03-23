@@ -46,8 +46,6 @@
                         ])
                     </div>
                 </div>
-            </div>
-            <div>
                 <div id="recent-pages" class="card mb-xl">
                     <h3 class="card-title">Newest Symbols 🌅</h3>
                     <div id="recently-updated-pages" class="px-m">
@@ -60,8 +58,10 @@
                     <a href="/pages/newest-symbols"
                     class="card-footer-link">{{ trans('common.view_all') }}</a>
                 </div>
+            </div>
+            <div>
                 <div id="recent-pages" class="card mb-xl">
-                    <h3 class="card-title">Ready For Review 🤓</h3>
+                    <h3 class="card-title">Ready For Review 🔎</h3>
                     <div id="recently-updated-pages" class="px-m">
                         @include('entities.list', [
                             'entities' => $latestCommunityReviews,
@@ -70,7 +70,20 @@
                         ])
                     </div>
                     <a href="{{ url('/books/community-review') }}"
-                        class="card-footer-link">{{ trans('common.view_all') }}</a>
+                        class="card-footer-link">{{ trans('common.view_all').' ('.$numCommunityReviews.')' }}</a>
+                        {{-- class="card-footer-link">{{ trans('common.view_all').' ('.$latestCommunityReviews.total().')' }}</a> --}}
+                </div>
+                <div id="recent-pages" class="card mb-xl">
+                    <h3 class="card-title">Looking for help 🙋‍♂️</h3>
+                    <div id="recently-updated-pages" class="px-m">
+                        @include('entities.list', [
+                            'entities' => $latestDraftHelp,
+                            'style' => 'compact',
+                            'emptyText' => trans('entities.no_pages_recently_updated'),
+                        ])
+                    </div>
+                    <a href="{{ url('/books/draft-help') }}"
+                        class="card-footer-link">{{ trans('common.view_all').' ('.$numDraftHelp.')' }}</a>
                 </div>
             </div>
             <div>
@@ -91,11 +104,11 @@
                             'emptyText' => trans('entities.no_pages_recently_updated'),
                         ])
                     </div>
-                    <a href="{{ url('/pages/drafts-recently-updated') }}"
+                    <a href="{{ url('/books/drafts') }}"
                         class="card-footer-link">{{ trans('common.view_all') }}</a>
                 </div>
                 <div id="recent-pages" class="card mb-xl">
-                    <h3 class="card-title">Recently Edited Symbols ✏️</h3>
+                    <h3 class="card-title">Recently Updated Symbols ✏️</h3>
                     <div id="recently-updated-pages" class="px-m">
                         @include('entities.list', [
                             'entities' => $recentUpdates,

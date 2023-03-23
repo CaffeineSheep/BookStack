@@ -142,7 +142,7 @@ export class EntitySelector extends Component {
         this.unselectAll();
         this.input.value = isSelected ? `${type}:${id}` : '';
 
-        const link = item.getAttribute('href');
+        const link = item.querySelector('.entity-link').getAttribute('href');
         const name = item.querySelector('.entity-list-item-name').textContent;
         const data = {id: Number(id), name: name, link: link};
 

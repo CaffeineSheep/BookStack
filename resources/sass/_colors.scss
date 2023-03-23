@@ -75,7 +75,7 @@
   color: var(--color-book);
   fill: var(--color-book);
 }
-.text-check, .text-book:hover {
+.text-symbolhub, .text-symbolhub:hover {
   color: var(--color-tasks);
   fill: var(--color-tasks);
 }
@@ -94,6 +94,10 @@
 .text-chapter, .text-chapter:hover {
   color: var(--color-chapter);
   fill: var(--color-chapter);
+}
+.text-info, .text-info:hover {
+  color: var(--color-info);
+  fill: var(--color-info);
 }
 
 /*

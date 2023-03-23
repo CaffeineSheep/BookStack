@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499999 6.3499999"
+   version="1.1"
+   id="svg1234"
+   sodipodi:docname="symbolhub-icon-simple.svg"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1236"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     width="24px"
+     inkscape:zoom="12.443434"
+     inkscape:cx="6.3085478"
+     inkscape:cy="36.444923"
+     inkscape:window-width="2134"
+     inkscape:window-height="1387"
+     inkscape:window-x="1653"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1231" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g980-5"
+       transform="matrix(0.01086685,0,0,0.01086685,-0.6283975,0.13229287)"
+       style="display:inline">
+      <path
+         d="M 205.25,308.518 338.69,231.389 V 77.129 L 205.25,0 71.63,77.129 v 154.26 z"
+         fill-rule="evenodd"
+         id="path892-8" />
+      <path
+         d="M 494.93,308.518 361.31,231.389 V 77.129 L 494.93,0 628.37,77.129 v 154.26 z"
+         fill-rule="evenodd"
+         id="path894-1" />
+      <path
+         d="M 350.09,559.998 216.47,482.869 v -154.26 l 133.62,-77.129 133.44,77.129 v 154.26 z"
+         fill-rule="evenodd"
+         id="path896-4" />
+    </g>
+  </g>
+</svg>

@@ -37,4 +37,28 @@ class UsersAllPaginatedAndSorted
 
         return $query->paginate($count);
     }
+
+    public function runColl(int $count, SimpleListOptions $listOptions, $limitToContributionActivity = false)
+    {
+        $sort = $listOptions->getSort();
+        if ($sort === 'created_at') {
+            $sort = 'users.created_at';
+        }
+
+        $query = User::query()->select(['*'])
+            ->withLastActivityAt($limitToContributionActivity)
+            ->with(['roles', 'avatar'])
+            ->withCount('mfaValues')
+            ->orderBy($sort, $listOptions->getOrder());
+
+        if ($listOptions->getSearch()) {
+            $term = '%' . $listOptions->getSearch() . '%';
+            $query->where(function ($query) use ($term) {
+                $query->where('name', 'like', $term)
+                    ->orWhere('email', 'like', $term);
+            });
+        }
+
+        return $query->all();
+    }
 }

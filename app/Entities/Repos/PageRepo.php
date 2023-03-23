@@ -63,13 +63,13 @@ class PageRepo
     /**
      * Get a page its book and own slug.
      *
-     * @throws NotFoundException
+     * @throws NotFoundException if $allowNull is false
      */
-    public function getBySlug(string $bookSlug, string $pageSlug): Page
+    public function getBySlug(string $bookSlug, string $pageSlug, bool $allowNull = false): Page|null
     {
         $page = Page::visible()->whereSlugs($bookSlug, $pageSlug)->first();
 
-        if (!$page) {
+        if (!$page && !$allowNull) {
             throw new NotFoundException(trans('errors.page_not_found'));
         }
 
@@ -133,13 +133,22 @@ class PageRepo
      */
     public function getNewDraftPage(Entity $parent)
     {
-        $page = (new Page())->forceFill([
+        
+        $defaultTemplatePage = $this->getBySlug("general", "symbol-template", true);
+
+        $newPageAttributes= [
             'name'       => trans('entities.pages_initial_name'),
             'created_by' => user()->id,
             'owned_by'   => user()->id,
             'updated_by' => user()->id,
             'draft'      => true,
-        ]);
+        ];
+
+        if ($defaultTemplatePage) {
+            $newPageAttributes['html'] = $defaultTemplatePage->html;
+        }
+
+        $page = (new Page())->forceFill($newPageAttributes);
 
         if ($parent instanceof Chapter) {
             $page->chapter_id = $parent->id;
@@ -337,7 +346,7 @@ class PageRepo
             throw new MoveOperationException('Book or chapter to move page into not found');
         }
 
-        if (!userCan('page-create', $parent) && !($parent->slug === 'community-review' && userCan('page-update', $parent))) {
+        if (!userCan('page-create', $parent) && !(($parent->slug === 'community-review' || $parent->slug === 'draft-help') && userCan('page-update', $parent))) {
             throw new PermissionsException('User does not have permission to create a page within the new parent');
         }
 

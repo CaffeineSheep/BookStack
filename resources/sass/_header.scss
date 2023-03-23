@@ -267,6 +267,12 @@ header .search-box.search-active:focus-within {
 
 
 
+@include smaller-than($xl) {
+  #symbolhub-btn {
+    display: none;
+  }
+}
+
 @include smaller-than($l) {
   #blog-btn {
     display: none;

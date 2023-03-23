@@ -214,18 +214,31 @@ class UserController extends Controller
     {
 
         $listOptions = SimpleListOptions::fromRequest($request, 'users', true)->withSortOptions([
-            'last_activity_at' => trans('settings.users_latest_activity'),
+            // 'last_activity_at' => trans('settings.users_latest_activity'),
             'name' => trans('common.sort_name')
         ]);
 
-        $users = (new UsersAllPaginatedAndSorted())->run(10, $listOptions, true)
-        ->through(function ($user) use ($activities) {
-            $user->activity = Arr::first($activities->userActivity($user, 1));
-            return $user;
-        });
+        // $users = (new UsersAllPaginatedAndSorted())->run(10, $listOptions, true)
+        // ->through(function ($user) use ($activities) {
+        //     $user->activity = Arr::first($activities->userActivity($user, 1));
+        //     return $user;
+        // });
+        $users = (new UsersAllPaginatedAndSorted())->run(10, $listOptions, true);
+        // $users1 = new UsersAllPaginatedAndSorted();
+        
+        // $users2 = $users1->runColl(5, $listOptions, true);
+
+        // // $users = $users2->paginate(5);
+
+        // $users = $users2->through(function ($user) use ($activities) {
+        //     $user->activity = Arr::first($activities->userActivity($user, 1));
+        //     return $user;
+        // });
 
         return view('users.list', [
-            'title' => 'All '.max(count($users) - 1, 0).' Users',
+            // 'title' => 'All '.max(count($users) - 1, 0).' Users',
+            'title' => 'All '.$users->total().' Users',
+            // 'users' => $users,
             'users' => $users,
             'skippedUserIds' => [User::getDefault()->id],
             'listOptions' => $listOptions,

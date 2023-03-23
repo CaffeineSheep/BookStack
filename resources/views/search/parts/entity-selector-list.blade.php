@@ -2,14 +2,20 @@
     @if(count($entities) > 0)
         @foreach($entities as $index => $entity)
 
-            @include('entities.list-item', [
-            'entity' => $entity,
-            'showPath' => true,
-            'locked' => $permission !== 'view' && !userCan($permission, $entity) && ($entity->slug !== 'community-review' && userCan('page-update', $entity) && $entity instanceof \BookStack\Entities\Models\Book)
-            ])
-        
-            @if($index !== count($entities) - 1)
-                <hr>
+            @php
+                $locked = $permission !== 'view' && !userCan($permission, $entity) && ((($entity->slug !== 'community-review' && $entity->slug !== 'draft-help') && userCan('page-update', $entity)) || ($entity->slug == 'general' && !userCan('page-update', $entity))) && $entity instanceof \BookStack\Entities\Models\Book;
+            @endphp
+
+            @if (!$locked)
+                @include('entities.list-item', [
+                'entity' => $entity,
+                'showPath' => true,
+                'locked' => $locked
+                ])
+            
+                @if($index !== count($entities) - 1)
+                    <hr>
+                @endif
             @endif
 
         @endforeach

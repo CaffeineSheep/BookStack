@@ -424,7 +424,7 @@ class PageController extends Controller
         $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
 
-        if ($bookSlug !== 'community-review') {
+        if ($bookSlug !== 'community-review' && $bookSlug !== 'draft-help') {
             $this->checkOwnablePermission('page-delete', $page);
         }
 
@@ -445,7 +445,7 @@ class PageController extends Controller
         $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
         $this->checkOwnablePermission('page-update', $page);
 
-        if ($bookSlug !== 'community-review') {
+        if ($bookSlug !== 'community-review' && $bookSlug !== 'draft-help') {
             $this->checkOwnablePermission('page-delete', $page);
         }
 

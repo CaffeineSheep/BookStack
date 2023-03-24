@@ -167,7 +167,9 @@
 
 @section('left')
 
-    @include('entities.search-form', ['label' => trans('entities.books_search_this') . ' ' . $book->name])
+    @if (($hideSearch ?? false) == false)
+        @include('entities.search-form', ['label' => trans('entities.books_search_this') . ' ' . $book->name])
+    @endif
 
     @if ($book->tags->count() > 0)
         <div class="mb-xl">

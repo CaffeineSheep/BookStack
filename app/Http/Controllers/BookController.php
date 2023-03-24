@@ -181,6 +181,7 @@ class BookController extends Controller
             'referenceCount' => $this->referenceFetcher->getPageReferenceCountToEntity($shelf),
             'isABook' => false,
             'showPath' => true,
+            'hideSearch' => true,
         ]);
     }
 

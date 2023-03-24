@@ -43,7 +43,7 @@ class HomeController extends Controller
 
 
         $quickLinks = collect([
-            new BasicListItem('/shelves/symbols', 'All Symbols', 'See all of the official symbols', 'star-circle'),
+            new BasicListItem('/shelves/symbols/all', 'All Symbols', 'See all of the official symbols', 'star-circle'),
             new BasicListItem(env('TASK_MANAGER_URL', null), 'SymbolHub', 'Find new symbols to add', 'symbolhub'),
             new BasicListItem('/books/general', 'Help', 'Learn how to use Symbolpedia!', 'info'),
             ...Bookshelf::getBySlug('contribute')->visibleBooks()->get()->all(),

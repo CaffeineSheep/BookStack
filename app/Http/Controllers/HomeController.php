@@ -20,11 +20,8 @@ class HomeController extends Controller
     {
         $activeUsers = $activities->recentlyActiveUsers(3);
 
-        $newSymbols = Page::getVisiblePagesInBookshelf('symbols')
-            ->orderBy('created_at', 'desc')
-            ->take(6)
-            // ->select(Page::$listAtt  ributes)
-            ->get();
+        $newSymbols = Page::getVisiblePagesInBookshelf('symbols')->orderBy('created_at', 'desc');
+            
 
         $latestDrafts = Page::getVisiblePagesInBookshelf('contribute')
             ->where('book_id', '=',  Book::getBySlug('drafts', true)->id)    
@@ -68,11 +65,11 @@ class HomeController extends Controller
         $commonData = [
             'activeUsers' => $activeUsers,
             'latestDrafts' => $latestDrafts,
-            'latestCommunityReviews' => $communityReviews->take(3)->get(),
+            'latestCommunityReviews' => $communityReviews->take(6)->get(),
             'numCommunityReviews' => $communityReviews->count(),
-            'latestDraftHelp' => $draftHelp->take(3)->get(),
+            'latestDraftHelp' => $draftHelp->take(6)->get(),
             'numDraftHelp' => $draftHelp->count(),
-            'newSymbols' => $newSymbols,
+            'newSymbols' => $newSymbols->take(6)->get(),
             'quickLinks' => $quickLinks,
             'symbolTypesList' => $symbolTypesList,
             'recentUpdates' => $recentUpdates,

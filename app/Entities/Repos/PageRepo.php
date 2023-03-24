@@ -137,7 +137,7 @@ class PageRepo
         $defaultTemplatePage = $this->getBySlug("general", "symbol-template", true);
 
         $newPageAttributes= [
-            'name'       => trans('entities.pages_initial_name'),
+            'name'       => trans('entities.pages_initial_name').' 🔎',
             'created_by' => user()->id,
             'owned_by'   => user()->id,
             'updated_by' => user()->id,

@@ -273,7 +273,7 @@ return [
     'pages_permissions_active' => 'Page Permissions Active',
     'pages_initial_revision' => 'Initial publish',
     'pages_references_update_revision' => 'System auto-update of internal links',
-    'pages_initial_name' => 'New Page',
+    'pages_initial_name' => 'Draft',
     'pages_editing_draft_notification' => 'You are currently editing a draft that was last saved :timeDiff.',
     'pages_draft_edited_notification' => 'This page has been updated by since that time. It is recommended that you discard this draft.',
     'pages_draft_page_changed_since_creation' => 'This page has been updated since this draft was created. It is recommended that you discard this draft or take care not to overwrite any page changes.',

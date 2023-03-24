@@ -61,7 +61,7 @@
             </div>
             <div>
                 <div id="recent-pages" class="card mb-xl">
-                    <h3 class="card-title">Ready For Review 🔎</h3>
+                    <h3 class="card-title">Ready For Review 👓</h3>
                     <div id="recently-updated-pages" class="px-m">
                         @include('entities.list', [
                             'entities' => $latestCommunityReviews,

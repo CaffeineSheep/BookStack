@@ -127,10 +127,10 @@
                         <span>@icon('edit')</span>
                         <span>{{ trans('common.edit') }}</span>
                     </a>
-                    <a href="{{ $book->getUrl('/sort') }}" class="icon-list-item">
+                    {{-- <a href="{{ $book->getUrl('/sort') }}" class="icon-list-item">
                         <span>@icon('sort')</span>
                         <span>{{ trans('common.sort') }}</span>
-                    </a>
+                    </a> --}}
                 @endif
                 @if (userCan('book-create-all'))
                     <a href="{{ $book->getUrl('/copy') }}" class="icon-list-item">

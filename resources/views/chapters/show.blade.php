@@ -147,13 +147,13 @@
                 </a>
             @endif
 
-            @if($chapter->book && userCan('book-update', $chapter->book))
+            {{-- @if($chapter->book && userCan('book-update', $chapter->book))
                 <hr class="primary-background"/>
                 <a href="{{ $chapter->book->getUrl('/sort') }}" data-shortcut="sort" class="icon-list-item">
                     <span>@icon('sort')</span>
                     <span>{{ trans('entities.chapter_sort_book') }}</span>
                 </a>
-            @endif
+            @endif --}}
 
             {{-- <hr class="primary-background"/>
 

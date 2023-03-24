@@ -123,8 +123,21 @@ class BookController extends Controller
     public function show(Request $request, ActivityQueries $activities, string $slug)
     {
         $book = $this->bookRepo->getBySlug($slug);
-        $bookChildren = (new BookContents($book))->getTree(true)->paginate(50);
         $bookParentShelves = $book->shelves()->scopes('visible')->get();
+
+        // Can use app/Http/Controllers/BookController.php and resources/views/shelves/show.blade.php for examples on implementing user selected sorting
+        $listOptions = SimpleListOptions::fromRequest($request, 'shelf_books')->withSortOptions([
+            // 'default' => trans('common.sort_default'),
+            'name' => trans('common.sort_name'),
+            // 'created_at' => trans('common.sort_created_at'),
+            // 'updated_at' => trans('common.sort_updated_at'),
+        ]);
+
+        $sort = $listOptions->getSort();
+        $sortedBookChildren = (new BookContents($book))
+            ->getTree(true)
+            ->sortBy($sort === 'default' ? 'pivot.order' : $sort, SORT_REGULAR, $listOptions->getOrder() === 'desc')
+            ->paginate(25);
 
         View::incrementFor($book);
         if ($request->has('shelf')) {
@@ -136,7 +149,7 @@ class BookController extends Controller
         return view('books.show-paginated', [
             'book'              => $book,
             'current'           => $book,
-            'bookChildren'      => $bookChildren,
+            'bookChildren'      => $sortedBookChildren,
             'bookParentShelves' => $bookParentShelves,
             'activity'          => $activities->entityActivity($book, 20, 1),
             'referenceCount'    => $this->referenceFetcher->getPageReferenceCountToEntity($book),
@@ -153,7 +166,7 @@ class BookController extends Controller
 
         $shelfPages = Page::getVisiblePagesInBookshelf($shelfSlug)
         ->orderBy('name', 'asc')
-        ->paginate(50);
+        ->paginate(25);
 
         $pageName = 'All '.$shelf->getShortName();
         $this->setPageTitle($pageName);

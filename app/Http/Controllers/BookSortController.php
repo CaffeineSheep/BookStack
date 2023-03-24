@@ -25,6 +25,7 @@ class BookSortController extends Controller
     {
         $book = $this->bookRepo->getBySlug($bookSlug);
         $this->checkOwnablePermission('book-update', $book);
+        $this->checkOwnablePermission('book-delete', $book);
 
         $bookChildren = (new BookContents($book))->getTree(false);
 
@@ -52,6 +53,7 @@ class BookSortController extends Controller
     {
         $book = $this->bookRepo->getBySlug($bookSlug);
         $this->checkOwnablePermission('book-update', $book);
+        $this->checkOwnablePermission('book-delete', $book);
 
         // Return if no map sent
         if (!$request->filled('sort-tree')) {

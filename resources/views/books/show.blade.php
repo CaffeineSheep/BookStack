@@ -109,7 +109,7 @@
 
             <hr class="primary-background">
 
-            @if(userCan('book-update', $book))
+            @if(userCan('book-update', $book) && userCan('book-delete', $book))
                 <a href="{{ $book->getUrl('/edit') }}" data-shortcut="edit" class="icon-list-item">
                     <span>@icon('edit')</span>
                     <span>{{ trans('common.edit') }}</span>

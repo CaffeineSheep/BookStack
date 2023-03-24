@@ -108,7 +108,7 @@
                         class="card-footer-link">{{ trans('common.view_all') }}</a>
                 </div>
                 <div id="recent-pages" class="card mb-xl">
-                    <h3 class="card-title">Recently Updated Symbols ✏️</h3>
+                    <h3 class="card-title">Recently Edited Symbols ✏️</h3>
                     <div id="recently-updated-pages" class="px-m">
                         @include('entities.list', [
                             'entities' => $recentUpdates,

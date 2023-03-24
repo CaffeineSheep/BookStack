@@ -22,7 +22,7 @@ class HomeController extends Controller
 
         $newSymbols = Page::getVisiblePagesInBookshelf('symbols')
             ->orderBy('created_at', 'desc')
-            ->take(10)
+            ->take(6)
             // ->select(Page::$listAtt  ributes)
             ->get();
 

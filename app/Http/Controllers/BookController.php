@@ -168,7 +168,7 @@ class BookController extends Controller
         ->orderBy('name', 'asc')
         ->paginate(25);
 
-        $pageName = 'All '.$shelf->getShortName();
+        $pageName = "All {$shelfPages->total()} ".$shelf->getShortName();
         $this->setPageTitle($pageName);
 
         return view('books.show-paginated', [

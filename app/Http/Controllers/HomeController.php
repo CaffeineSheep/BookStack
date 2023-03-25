@@ -70,6 +70,7 @@ class HomeController extends Controller
             'latestDraftHelp' => $draftHelp->take(6)->get(),
             'numDraftHelp' => $draftHelp->count(),
             'newSymbols' => $newSymbols->take(6)->get(),
+            'numNewSymbols' => $newSymbols->count(),
             'quickLinks' => $quickLinks,
             'symbolTypesList' => $symbolTypesList,
             'recentUpdates' => $recentUpdates,

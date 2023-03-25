@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div id="recent-pages" class="card mb-xl">
-                    <h3 class="card-title">New Symbols 🌅</h3>
+                    <h3 class="card-title">Latest Symbols 🌅</h3>
                     <div id="recently-updated-pages" class="px-m">
                         @include('entities.list', [
                             'entities' => $newSymbols,
@@ -56,7 +56,7 @@
                         ])
                     </div>
                     <a href="/pages/newest-symbols"
-                    class="card-footer-link">{{ trans('common.view_all') }}</a>
+                    class="card-footer-link">{{ trans('common.view_all')." ($numNewSymbols)" }}</a>
                 </div>
             </div>
             <div>
@@ -70,7 +70,7 @@
                         ])
                     </div>
                     <a href="{{ url('/books/community-review') }}"
-                        class="card-footer-link">{{ trans('common.view_all').' ('.$numCommunityReviews.')' }}</a>
+                        class="card-footer-link">{{ trans('common.view_all')." ($numCommunityReviews)" }}</a>
                         {{-- class="card-footer-link">{{ trans('common.view_all').' ('.$latestCommunityReviews.total().')' }}</a> --}}
                 </div>
                 <div id="recent-pages" class="card mb-xl">
@@ -83,7 +83,7 @@
                         ])
                     </div>
                     <a href="{{ url('/books/draft-help') }}"
-                        class="card-footer-link">{{ trans('common.view_all').' ('.$numDraftHelp.')' }}</a>
+                        class="card-footer-link">{{ trans('common.view_all')." ($numDraftHelp)" }}</a>
                 </div>
             </div>
             <div>
